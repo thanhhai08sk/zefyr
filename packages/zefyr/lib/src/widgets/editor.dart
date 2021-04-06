@@ -805,7 +805,12 @@ class RawEditorState extends EditorState
     // Focus
     _focusAttachment = widget.focusNode.attach(context,
         onKey: (node, event) {
-          _keyboardListener.handleKeyEvent(event);
+          final handled = _keyboardListener.handleKeyEvent(event);
+          if(handled){
+            return KeyEventResult.handled;
+          }else{
+            KeyEventResult.ignored;
+          }
         });
     widget.focusNode.addListener(_handleFocusChanged);
   }
