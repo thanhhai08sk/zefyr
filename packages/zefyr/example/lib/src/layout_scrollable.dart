@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:zefyr/zefyr.dart';
 
 import 'scaffold.dart';
@@ -15,9 +16,22 @@ class _ScrollableLayoutState extends State<ScrollableLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return DemoScaffold(
-      documentFilename: 'layout_scrollable.note',
-      builder: _buildContent,
+    return Focus(
+      autofocus: true,
+      onFocusChange: (hasFocus){
+        debugPrint("MainContainerWidgetState build: has focus: Focus $hasFocus");
+      },
+      onKey: (node, event){
+        debugPrint("MainContainerWidgetState build: key: ${event.logicalKey}");
+        if(event is RawKeyDownEvent){
+          debugPrint("MainContainerWidgetState build: key down: ${event.logicalKey}");
+        }
+        return KeyEventResult.ignored;
+      },
+      child: DemoScaffold(
+        documentFilename: 'layout_scrollable.note',
+        builder: _buildContent,
+      ),
     );
   }
 

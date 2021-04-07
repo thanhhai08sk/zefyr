@@ -794,7 +794,11 @@ class RawEditorState extends EditorState
       if (handled) {
         return KeyEventResult.handled;
       } else {
-        KeyEventResult.ignored;
+        if(kIsWeb){
+          return null;
+        }else{
+          return KeyEventResult.ignored;
+        }
       }
     });
     widget.focusNode.addListener(_handleFocusChanged);
@@ -844,7 +848,7 @@ class RawEditorState extends EditorState
         if (handled) {
           return KeyEventResult.handled;
         } else {
-          KeyEventResult.ignored;
+          return KeyEventResult.ignored;
         }
       });
       widget.focusNode.addListener(_handleFocusChanged);
