@@ -55,8 +55,9 @@ mixin RawEditorStateSelectionDelegateMixin on EditorState
     // TODO: implement bringIntoView
   }
 
+
   @override
-  void hideToolbar() {
+  void hideToolbar([bool hideHandles = true]) {
     if (selectionOverlay?.toolbarIsVisible == true) {
       selectionOverlay?.hideToolbar();
     }

@@ -1163,6 +1163,13 @@ class RawEditorState extends EditorState
       return theme.lists.spacing;
     }
   }
+
+  @override
+  void userUpdateTextEditingValue(TextEditingValue value, SelectionChangedCause cause) {
+    //todo remove
+    debugPrint('RawEditorState userUpdateTextEditingValue: $value, $cause');
+  }
+
 }
 
 class _Editor extends MultiChildRenderObjectWidget {
